@@ -1,29 +1,44 @@
 <template>
-  <div
-    class="syrup"
-    :style="{ '--texture-color': beverageStore.currentSyrup?.color }"
-  ></div>
+  <div class="syrup" :style="syrupStyle"></div>
 </template>
 
 <script setup lang="ts">
-import { useBeverageStore } from "../stores/beverageStore";
+import { computed } from "vue";
+import type { SyrupType } from "../stores/beverageStore";
 
-const beverageStore = useBeverageStore();
+type Props = {
+  syrup: SyrupType;
+};
+
+const props = defineProps<Props>();
+
+const syrupStyle = computed(() => {
+  if (props.syrup.name === "No Syrup") {
+    return {
+      background: "transparent",
+    };
+  }
+
+  return {
+    background: `repeating-linear-gradient(
+      45deg,
+      ${props.syrup.color},
+      ${props.syrup.color} 10px,
+      rgba(255,255,255,0.2) 10px,
+      rgba(255,255,255,0.2) 20px
+    )`,
+  };
+});
 </script>
+
 <style lang="scss" scoped>
 .syrup {
   transform: translateY(400%);
+  background-color: #c6c6c6;
   position: relative;
   width: 100%;
   height: 20%;
   animation: pour-tea 2s 1s forwards;
   z-index: 2;
-  background: repeating-linear-gradient(
-    45deg,
-    var(--texture-color),
-    var(--texture-color) 10px,
-    rgba(225, 207, 149, 1) 10px,
-    rgba(225, 207, 149, 1) 20px
-  );
 }
 </style>
