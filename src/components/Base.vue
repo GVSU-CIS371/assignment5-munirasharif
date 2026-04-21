@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BaseBeverageType } from "../stores/beverageStore";
+import type { BaseBeverageType } from "../types/beverage";
 
 type Props = {
   base: BaseBeverageType;

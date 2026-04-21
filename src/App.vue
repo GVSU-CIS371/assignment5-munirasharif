@@ -26,12 +26,17 @@
   {{ message }}
 </p>
 
-    <Beverage
-      :isIced="beverageStore.currentTemp === 'Cold'"
-      :base="beverageStore.currentBase"
-      :creamer="beverageStore.currentCreamer"
-      :syrup="beverageStore.currentSyrup"
-    />
+<Beverage
+  v-if="
+    beverageStore.currentBase &&
+    beverageStore.currentCreamer &&
+    beverageStore.currentSyrup
+  "
+  :isIced="beverageStore.currentTemp === 'Cold'"
+  :base="beverageStore.currentBase"
+  :creamer="beverageStore.currentCreamer"
+  :syrup="beverageStore.currentSyrup"
+/>
 
     <ul>
       <li>

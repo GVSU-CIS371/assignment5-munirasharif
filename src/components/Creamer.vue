@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import type { CreamerType } from "../stores/beverageStore";
+import type { CreamerType } from "../types/beverage";
 
 type Props = {
   creamer: CreamerType;

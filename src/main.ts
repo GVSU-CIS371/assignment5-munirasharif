@@ -9,9 +9,13 @@ const app = createApp(App);
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedState);
 
-app.use(pinia);
+async function startApp() {
+  app.use(pinia);
 
-const beverageStore = useBeverageStore(pinia);
-await beverageStore.init();
+  const beverageStore = useBeverageStore(pinia);
+  await beverageStore.init();
 
-app.mount("#app");
+  app.mount("#app");
+}
+
+startApp();

@@ -100,6 +100,9 @@ export const useBeverageStore = defineStore("BeverageStore", {
     },
 
     async makeBeverage() {
+      if (!this.user) {
+        return "No user logged in, please sign in first.";
+      }
       if (
         !this.name.trim() ||
         !this.currentBase ||

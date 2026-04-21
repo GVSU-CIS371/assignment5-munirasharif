@@ -33,7 +33,7 @@ import type {
   BaseBeverageType,
   CreamerType,
   SyrupType,
-} from "../stores/beverageStore";
+} from "../types/beverage";
 
 type Props = {
   isIced: boolean;
